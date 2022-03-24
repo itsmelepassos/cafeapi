@@ -1,0 +1,32 @@
+{
+  "name": "itsmelepassos/cafeapi",
+  "description": "Biblioteca API para integração com o webservice do SaaS FSPHP",
+  "keywords": [
+    "FSPHP",
+    "Its Me Le Passos",
+    "Leandro Passos",
+    "SaaS",
+    "PHP",
+    "Full Stack"
+  ],
+  "homepage": "http://www.itsmelepassos.com.br",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Leandro Passos",
+      "email": "itsmelepassos@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^7.3|^8.0",
+    "ext-json": "*",
+    "ext-curl": "*",
+    "composer-runtime-api": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "ItsMeLePassos\\CafeApi\\": "src"
+    }
+  }
+}
