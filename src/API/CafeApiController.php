@@ -10,7 +10,7 @@ abstract class CafeApiController
     /** @var array */
     private $headers;
 
-    /** @var array|string */
+    /** @var array|null */
     private $fields;
 
     /** @var string */
