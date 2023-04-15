@@ -1,12 +1,12 @@
 <?php
 
-use ItsMeLePassos\CafeApi\Subscriptions;
+use ItsMeLePassos\CafeApi\SubscriptionController;
 
 require __DIR__ . "/assets/config.php";
 require __DIR__ . "/../vendor/autoload.php";
 
-$subscription = new Subscriptions(
-    "localhost/upinside/full-stack-php-developer/projects/cafecontrol/api",
+$subscription = new SubscriptionController(
+    "localhost/upinside.fsdev.cafecontrol.dev/public/api",
     "itsmelepassos@gmail.com",
     "123456789"
 );
@@ -31,10 +31,10 @@ echo "<h1>CREATE</h1>";
 
 $create = $subscription->create([
     "plan_id" => 1,
-    "card_number" => "5172860901300432",
+    "card_number" => "5283 2169 0457 4679",
     "card_holder_name" => "LEANDRO PASSOS",
-    "card_expiration_date" => "11/22",
-    "card_cvv" => "118"
+    "card_expiration_date" => "01/25",
+    "card_cvv" => "201"
 ]);
 
 if ($create->error()) {

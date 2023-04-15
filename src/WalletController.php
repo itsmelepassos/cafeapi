@@ -2,11 +2,9 @@
 
 namespace ItsMeLePassos\CafeApi;
 
-/**
- * Class Wallets
- * @package ItsMeLePassos\CafeApi
- */
-class Wallets extends CafeApi
+use ItsMeLePassos\CafeApi\API\CafeApiController;
+
+class WalletController extends CafeApiController
 {
     /**
      * Wallets constructor.
@@ -21,9 +19,9 @@ class Wallets extends CafeApi
 
     /**
      * @param array|null $headers
-     * @return Wallets
+     * @return WalletController
      */
-    final public function index(?array $headers): Wallets
+    public function index(?array $headers): WalletController
     {
         $this->request(
             "GET",
@@ -37,9 +35,9 @@ class Wallets extends CafeApi
 
     /**
      * @param array $fields
-     * @return Wallets
+     * @return WalletController
      */
-    final public function create(array $fields): Wallets
+    public function create(array $fields): WalletController
     {
         $this->request(
             "POST",
@@ -52,9 +50,9 @@ class Wallets extends CafeApi
 
     /**
      * @param int $walletId
-     * @return Wallets
+     * @return WalletController
      */
-    final public function read(int $walletId): Wallets
+    public function read(int $walletId): WalletController
     {
         $this->request(
             "GET",
@@ -67,9 +65,9 @@ class Wallets extends CafeApi
     /**
      * @param int $walletId
      * @param array $fields
-     * @return Wallets
+     * @return WalletController
      */
-    final public function update(int $walletId, array $fields): Wallets
+    public function update(int $walletId, array $fields): WalletController
     {
         $this->request(
             "PUT",
@@ -82,9 +80,9 @@ class Wallets extends CafeApi
 
     /**
      * @param int $walletId
-     * @return Wallets
+     * @return WalletController
      */
-    final public function delete(int $walletId): Wallets
+    public function delete(int $walletId): WalletController
     {
         $this->request(
             "DELETE",

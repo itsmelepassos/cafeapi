@@ -2,10 +2,10 @@
 require __DIR__ . "/assets/config.php";
 require __DIR__ . "/../vendor/autoload.php";
 
-use ItsMeLePassos\CafeApi\Invoices;
+use ItsMeLePassos\CafeApi\InvoiceController;
 
-$invoices = new Invoices(
-    "localhost/upinside/full-stack-php-developer/projects/cafecontrol/api",
+$invoices = new InvoiceController(
+    "localhost/upinside.fsdev.cafecontrol.dev/public/api",
     "itsmelepassos@gmail.com",
     "123456789"
 );
@@ -17,8 +17,8 @@ echo "<h1>INDEX</h1>";
 
 $index = $invoices->index(null);
 $index = $invoices->index([
-    "wallet_id" => 23,
-    "type" => "fixed_income",
+    "wallet_id" => 24,
+    "type" => "income",
     "status" => "paid",
     "page" => 2
 ]);
@@ -64,21 +64,19 @@ $value = function ($value) use ($create) {
 };
 
 ?>
-    <form action="" method="post">
-        <input type="hidden" name="create" value="true"/>
-        <input type="text" name="wallet_id" value="<?= $value("wallet_id"); ?>" placeholder="wallet_id | Ex: 23"/>
-        <input type="text" name="category_id" value="<?= $value("category_id"); ?>" placeholder="category_id | Ex: 3"/>
-        <input type="text" name="description" value="<?= $value("description"); ?>"
-               placeholder="description | Ex: By Component"/>
-        <input type="text" name="type" value="<?= $value("type"); ?>" placeholder="type | Ex: income"/>
-        <input type="text" name="value" value="<?= $value("value"); ?>" placeholder="value | Ex: 2500.10"/>
-        <input type="text" name="due_at" value="<?= $value("due_at"); ?>" placeholder="due_at | Ex: 2019-02-20"/>
-        <input type="text" name="repeat_when" value="<?= $value("repeat_when"); ?>"
-               placeholder="repeat_when | Ex: single"/>
-        <input type="text" name="period" value="<?= $value("period"); ?>" placeholder="period | Ex: month"/>
-        <input type="text" name="enrollments" value="<?= $value("enrollments"); ?>" placeholder="enrollments | Ex: 1"/>
-        <button>Cadastrar</button>
-    </form>
+<form action="" method="post">
+    <input type="hidden" name="create" value="true" />
+    <input type="text" name="wallet_id" value="<?= $value("wallet_id"); ?>" placeholder="wallet_id | Ex: 23" />
+    <input type="text" name="category_id" value="<?= $value("category_id"); ?>" placeholder="category_id | Ex: 3" />
+    <input type="text" name="description" value="<?= $value("description"); ?>" placeholder="description | Ex: By Component" />
+    <input type="text" name="type" value="<?= $value("type"); ?>" placeholder="type | Ex: income" />
+    <input type="text" name="value" value="<?= $value("value"); ?>" placeholder="value | Ex: 2500.10" />
+    <input type="text" name="due_at" value="<?= $value("due_at"); ?>" placeholder="due_at | Ex: 2019-02-20" />
+    <input type="text" name="repeat_when" value="<?= $value("repeat_when"); ?>" placeholder="repeat_when | Ex: single" />
+    <input type="text" name="period" value="<?= $value("period"); ?>" placeholder="period | Ex: month" />
+    <input type="text" name="enrollments" value="<?= $value("enrollments"); ?>" placeholder="enrollments | Ex: 1" />
+    <button>Cadastrar</button>
+</form>
 <?php
 
 /**
@@ -86,8 +84,8 @@ $value = function ($value) use ($create) {
  */
 echo "<h1>READ</h1>";
 
-$invoice = $invoices->read(855);
-$invoice = $invoices->read(91);
+$invoice = $invoices->read(427);
+// $invoice = $invoices->read(376);
 
 if ($invoice->error()) {
     echo "<p class='error'>{$invoice->error()->message}</p>";
@@ -104,7 +102,7 @@ if ($invoice->error()) {
  */
 echo "<h1>UPDATE</h1>";
 
-$invoiceId = 91;
+$invoiceId = 427;
 $invoiceUpdate = $invoices->read($invoiceId);
 
 if ($invoiceUpdate->error()) {
@@ -128,19 +126,19 @@ if ($invoiceUpdate->error()) {
     $value = function ($value) use ($data) {
         return (!empty($data->$value) ? $data->$value : null);
     };
-    ?>
+?>
 
     <form action="" method="post">
-        <input type="hidden" name="update" value="true"/>
-        <input type="text" name="wallet_id" value="<?= $value("wallet_id"); ?>"/>
-        <input type="text" name="category_id" value="<?= $value("category_id"); ?>"/>
-        <input type="text" name="description" value="<?= $value("description"); ?>"/>
-        <input type="text" name="value" value="<?= $value("value"); ?>"/>
-        <input type="text" name="due_day" value="<?= date("d", strtotime($value("due_at"))); ?>"/>
-        <input type="text" name="status" value="<?= $value("status"); ?>"/>
+        <input type="hidden" name="update" value="true" />
+        <input type="text" name="wallet_id" value="<?= $value("wallet_id"); ?>" placeholder="wallet_id | Ex: 23" />
+        <input type="text" name="category_id" value="<?= $value("category_id"); ?>" placeholder="category_id | Ex: 3" />
+        <input type="text" name="description" value="<?= $value("description"); ?>" placeholder="description | Ex: By Component" />
+        <input type="text" name="value" value="<?= $value("value"); ?>" placeholder="value | Ex: 2500.10" />
+        <input type="text" name="due_day" value="<?= date("d", strtotime($value("due_at"))); ?>" placeholder="due_at | Ex: 2019-02-20" />
+        <input type="text" name="status" value="<?= $value("status"); ?>" placeholder="status | Ex: paid" />
         <button>Atualizar</button>
     </form>
-    <?php
+<?php
 }
 
 /**
@@ -148,7 +146,7 @@ if ($invoiceUpdate->error()) {
  */
 echo "<h1>DELETE</h1>";
 
-$delete = $invoices->delete(91);
+$delete = $invoices->delete(427);
 if ($delete->error()) {
     echo "<p class='error'>{$delete->error()->message}</p>";
 } else {

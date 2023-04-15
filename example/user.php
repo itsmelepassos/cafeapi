@@ -2,10 +2,10 @@
 require __DIR__ . "/assets/config.php";
 require dirname(__DIR__, 1) . "/vendor/autoload.php";
 
-use ItsMeLePassos\CafeApi\Me;
+use ItsMeLePassos\CafeApi\MeController;
 
-$me = new Me(
-    "localhost/upinside/full-stack-php-developer/projects/cafecontrol/api",
+$me = new MeController(
+    "localhost/upinside.fsdev.cafecontrol.dev/public/api",
     "itsmelepassos@gmail.com",
     "123456789"
 );
@@ -38,15 +38,15 @@ if ($update && !empty($update["user"])) {
 //$userData = $user->me()->response()->user;
 $userData = $user->me()->response()->user;
 ?>
-    <form action="" method="post">
-        <input type="hidden" name="user" value="true"/>
-        <input type="text" name="first_name" value="<?= ($userData->first_name ?? null); ?>"/>
-        <input type="text" name="last_name" value="<?= ($userData->last_name ?? null); ?>"/>
-        <input type="text" name="genre" value="<?= ($userData->genre ?? null); ?>"/>
-        <input type="text" name="datebirth" value="<?= ($userData->datebirth ?? null); ?>"/>
-        <input type="text" name="document" value="<?= ($userData->document ?? null); ?>"/>
-        <button>Atualizar</button>
-    </form>
+<form action="" method="post">
+    <input type="hidden" name="user" value="true" />
+    <input type="text" name="first_name" value="<?= ($userData->first_name ?? null); ?>" />
+    <input type="text" name="last_name" value="<?= ($userData->last_name ?? null); ?>" />
+    <input type="text" name="genre" value="<?= ($userData->genre ?? null); ?>" />
+    <input type="text" name="datebirth" value="<?= ($userData->datebirth ?? null); ?>" />
+    <input type="text" name="document" value="<?= ($userData->document ?? null); ?>" />
+    <button>Atualizar</button>
+</form>
 <?php
 
 /**
@@ -66,9 +66,8 @@ if ($photo) {
     }
 }
 ?>
-    <form action="" method="post" enctype="multipart/form-data">
-        <input type="file" name="photo"/>
-        <button>Atualizar</button>
-    </form>
+<form action="" method="post" enctype="multipart/form-data">
+    <input type="file" name="photo" />
+    <button>Atualizar</button>
+</form>
 <?php
-

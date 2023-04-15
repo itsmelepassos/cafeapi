@@ -2,15 +2,12 @@
 
 namespace ItsMeLePassos\CafeApi;
 
-/**
- * Class Subscriptions
- * @package ItsMeLePassos\CafeApi
- */
-class Subscriptions extends CafeApi
-{
+use ItsMeLePassos\CafeApi\API\CafeApiController;
 
+class SubscriptionController extends CafeApiController
+{
     /**
-     * Subscriptions constructor.
+     * SubscriptionController constructor.
      * @param string $apiUrl
      * @param string $email
      * @param string $password
@@ -21,9 +18,9 @@ class Subscriptions extends CafeApi
     }
 
     /**
-     * @return Subscriptions
+     * @return SubscriptionController
      */
-    final public function index(): Subscriptions
+    public function index(): SubscriptionController
     {
         $this->request(
             "GET",
@@ -35,9 +32,9 @@ class Subscriptions extends CafeApi
 
     /**
      * @param array $fields
-     * @return Subscriptions
+     * @return SubscriptionController
      */
-    final public function create(array $fields): Subscriptions
+    public function create(array $fields): SubscriptionController
     {
         $this->request(
             "POST",
@@ -49,9 +46,9 @@ class Subscriptions extends CafeApi
     }
 
     /**
-     * @return Subscriptions
+     * @return SubscriptionController
      */
-    final public function read(): Subscriptions
+    public function read(): SubscriptionController
     {
         $this->request(
             "GET",
@@ -63,9 +60,9 @@ class Subscriptions extends CafeApi
 
     /**
      * @param array $fields
-     * @return Subscriptions
+     * @return SubscriptionController
      */
-    final public function update(array $fields): Subscriptions
+    public function update(array $fields): SubscriptionController
     {
         $this->request(
             "PUT",

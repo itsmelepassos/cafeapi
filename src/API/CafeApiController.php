@@ -1,26 +1,22 @@
 <?php
 
-namespace ItsMeLePassos\CafeApi;
+namespace ItsMeLePassos\CafeApi\API;
 
-/**
- * Class CafeApi
- * @package ItsMeLePassos\CafeApi
- */
-abstract class CafeApi
+abstract class CafeApiController
 {
     /** @var string */
     private $apiUrl;
 
-    /** @var array|null */
+    /** @var array */
     private $headers;
 
-    /** @var array|string|null */
+    /** @var array */
     private $fields;
 
-    /** @var string|null */
+    /** @var string */
     private $endpoint;
 
-    /** @var string|null */
+    /** @var string */
     private $method;
 
     /** @var object */
@@ -82,7 +78,7 @@ abstract class CafeApi
      */
     private function headers(?array $headers): void
     {
-        if (empty($headers)) {
+        if (!$headers) {
             return;
         }
 
@@ -102,7 +98,7 @@ abstract class CafeApi
             $this->fields = (!empty($this->fields) ? http_build_query($this->fields) : null);
         }
 
-        curl_setopt_array(/** @scrutinizer ignore-type */ $curl, array(
+        curl_setopt_array($curl, array(
             CURLOPT_URL => "{$this->apiUrl}/{$this->endpoint}",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_MAXREDIRS => 10,
@@ -113,7 +109,7 @@ abstract class CafeApi
             CURLOPT_HTTPHEADER => $this->headers,
         ));
 
-        $this->response = json_decode(curl_exec(/** @scrutinizer ignore-type */ $curl));
-        curl_close(/** @scrutinizer ignore-type */ $curl);
+        $this->response = json_decode(curl_exec($curl));
+        curl_close($curl);
     }
 }

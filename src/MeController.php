@@ -2,11 +2,13 @@
 
 namespace ItsMeLePassos\CafeApi;
 
+use ItsMeLePassos\CafeApi\API\CafeApiController;
+
 /**
- * Class Me
- * @package ItsMeLePassos\CafeApi
+ * 
+ * @package Source\App\CafeApi
  */
-class Me extends CafeApi
+class MeController extends CafeApiController
 {
     /**
      * Me constructor
@@ -22,7 +24,7 @@ class Me extends CafeApi
     /**
      * @return Me
      */
-    final public function me(): Me
+    public function me(): MeController
     {
         $this->request(
             "GET",
@@ -36,7 +38,7 @@ class Me extends CafeApi
      * @param array $fields
      * @return Me
      */
-    final public function update(array $fields): Me
+    public function update(array $fields): MeController
     {
         $this->request(
             "PUT",
@@ -51,7 +53,7 @@ class Me extends CafeApi
      * @param array $files
      * @return Me
      */
-    final public function photo(array $files): Me
+    public function photo(array $files): MeController
     {
         $this->request(
             "POST",

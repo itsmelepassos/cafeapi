@@ -2,11 +2,9 @@
 
 namespace ItsMeLePassos\CafeApi;
 
-/**
- * Class Invoices
- * @package ItsMeLePassos\CafeApi
- */
-class Invoices extends CafeApi
+use ItsMeLePassos\CafeApi\API\CafeApiController;
+
+class InvoiceController extends CafeApiController
 {
     /**
      * Invoices constructor
@@ -21,9 +19,9 @@ class Invoices extends CafeApi
 
     /**
      * @param array|null $headers
-     * @return Invoices
+     * @return InvoiceController
      */
-    final public function index(?array $headers): Invoices
+    public function index(?array $headers): InvoiceController
     {
         $this->request(
             "GET",
@@ -37,9 +35,9 @@ class Invoices extends CafeApi
 
     /**
      * @param array $fields
-     * @return Invoices
+     * @return InvoiceController
      */
-    final public function create(array $fields): Invoices
+    public function create(array $fields): InvoiceController
     {
         $this->request(
             "POST",
@@ -52,9 +50,9 @@ class Invoices extends CafeApi
 
     /**
      * @param int $invoiceId
-     * @return Invoices
+     * @return InvoiceController
      */
-    final public function read(int $invoiceId): Invoices
+    public function read(int $invoiceId): InvoiceController
     {
         $this->request(
             "GET",
@@ -67,9 +65,9 @@ class Invoices extends CafeApi
     /**
      * @param int $invoiceId
      * @param array $fields
-     * @return Invoices
+     * @return InvoiceController
      */
-    final public function update(int $invoiceId, array $fields): Invoices
+    public function update(int $invoiceId, array $fields): InvoiceController
     {
         $this->request(
             "PUT",
@@ -82,9 +80,9 @@ class Invoices extends CafeApi
 
     /**
      * @param int $invoiceId
-     * @return Invoices
+     * @return InvoiceController
      */
-    final public function delete(int $invoiceId): Invoices
+    public function delete(int $invoiceId): InvoiceController
     {
         $this->request(
             "DELETE",
