@@ -78,7 +78,7 @@ abstract class CafeApiController
      */
     private function headers(?array $headers): void
     {
-        if (!$headers) {
+        if (!$headers || empty($headers)) {
             return;
         }
 
